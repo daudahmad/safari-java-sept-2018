@@ -1,9 +1,27 @@
 package computations;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Compute {
+  // java arguments do NOT have default values,
+  // we cannot pass "named arguments"
+  public static void showList(List<String> ls, String message) {
+    for (String n : ls) {
+      System.out.println(message + n);
+    }
+    System.out.println("-------------------------");
+  }
+
+  public static void showList(List<String> ls) {
+    showList(ls, ">> ");
+  }
+
+/*  Method overloading
+  public static Cake makeCake(Flour f, Water w, Eggs e) {}
+  public static Cake makeCake(PacketMix p) {}
+*/
   public static void main(String[] args) {
     int x = 3;
     int y = 4;
@@ -51,16 +69,23 @@ public class Compute {
       System.out.println("Name is " + n);
     }
 
-    List<String> ls = new ArrayList<>();
+    List<String> ls = new LinkedList<>();//new ArrayList<>();
     ls.add("Fred");
     ls.add("Jim");
     ls.add("Sheila");
-    for (String n : ls) {
-      System.out.println("name from List is " + n);
-    }
+//    for (String n : ls) {
+//      System.out.println("name from List is " + n);
+//    }
+    showList(ls, "name from list is ");
     ls.add("Andy");
-    for (String n : ls) {
-      System.out.println("name from longer List is " + n);
-    }
+//    for (String n : ls) {
+//      System.out.println("name from longer List is " + n);
+//    }
+    showList(ls, "name from longer list is ");
+
+    /*Array*/List<String> l2 = new ArrayList<>();
+    l2.add("William");
+    l2.add("Bert");
+    showList(l2, "from an arrayList: ");
   }
 }
