@@ -1,11 +1,44 @@
 package objects;
 
 public class MyDate {
-  int day;
-  int month;
-  int year;
+  private int day;
+  private int month;
+  private int year;
 
-  public String asString() {
+  // Constructor
+  public MyDate(int day, int month, int year) {
+    if (month >= 1 && month <= 12 && day >= 1 && day <= daysInMonth(month, year)) {
+      this.day = day;
+      this.month = month;
+      this.year = year;
+    } else {
+      throw new IllegalArgumentException("Bad date values!");
+    }
+  }
+  public int getDay() {
+    return this.day;
+  }
+  public int getMonth() {
+    return this.month;
+  }
+  public int getYear() {
+    return this.year;
+  }
+
+  public void tomorrow() {
+    this.day++;
+    if (this.day > daysInMonth(this.month, this.year)) {
+      this.day = 1;
+      this.month++;
+      if (this.month == 13) {
+        this.month = 1;
+        this.year++;
+      }
+    }
+  }
+
+  @Override
+  public String toString() {
     return "Day is " + this.day + " month is " + this.month
         + " year is " + this.year;
   }
